@@ -31,6 +31,11 @@ fn readBook(book: &Book) {
     println!("{:?}", book)
 }
 
+// 显示的标注生命周期
+fn print_ref<'a, 'b>(a: &'a i32, b: &'b i32) {
+    println!("{},{}", a, b)
+}
+
 fn main() {
     for _ in 0..100 {
         // 不需要手动释放内存 RAII
@@ -68,4 +73,7 @@ fn main() {
     // 左边的ref等价于右边的&
     let ref_c1 = &c;
     let ref ref_c2 = c;
+
+    let (a, b) = (1, 2);
+    print_ref(&a, &b);
 }
